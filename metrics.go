@@ -273,6 +273,22 @@ var (
 		},
 		nil,
 	)
+	metricDeviceSelfTestStatus = prometheus.NewDesc(
+		"smartctl_device_self_test_status",
+		"Device SMART self test execution status value from ata_smart_data",
+		[]string{
+			"device",
+		},
+		nil,
+	)
+	metricDeviceSelfTestRemainingPercent = prometheus.NewDesc(
+		"smartctl_device_self_test_remaining_percent",
+		"Device SMART self test remaining percent, 0 when no test is running",
+		[]string{
+			"device",
+		},
+		nil,
+	)
 	metricDeviceERCSeconds = prometheus.NewDesc(
 		"smartctl_device_erc_seconds",
 		"Device SMART Error Recovery Control Seconds",

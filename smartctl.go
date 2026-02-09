@@ -560,6 +560,30 @@ func (smart *SMARTctl) mineDeviceSelfTestLog() {
 			logType,
 		)
 	}
+	smart.mineDeviceSelfTestStatus()
+}
+
+func (smart *SMARTctl) mineDeviceSelfTestStatus() {
+	status := smart.json.Get("ata_smart_data.self_test.status")
+	if !status.Exists() {
+		return
+	}
+	smart.ch <- prometheus.MustNewConstMetric(
+		metricDeviceSelfTestStatus,
+		prometheus.GaugeValue,
+		status.Get("value").Float(),
+		smart.device.device,
+	)
+	remainingPercent := 0.0
+	if rp := status.Get("remaining_percent"); rp.Exists() {
+		remainingPercent = rp.Float()
+	}
+	smart.ch <- prometheus.MustNewConstMetric(
+		metricDeviceSelfTestRemainingPercent,
+		prometheus.GaugeValue,
+		remainingPercent,
+		smart.device.device,
+	)
 }
 
 func (smart *SMARTctl) mineDeviceERC() {

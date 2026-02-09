@@ -4,6 +4,7 @@
 /.tarballs
 debug/
 .idea/
+smartctl-data/
 
 Manifest
 smartctl_exporter
