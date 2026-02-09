@@ -1,0 +1,18 @@
+smartctl_device_available_spare_threshold{device="nvme0"} 10
+smartctl_device_available_spare{device="nvme0"} 100
+smartctl_device_block_size{blocks_type="logical",device="nvme0"} 4096
+smartctl_device_block_size{blocks_type="physical",device="nvme0"} 0
+smartctl_device_bytes_read{device="nvme0"} 1.392499456e+13
+smartctl_device_bytes_written{device="nvme0"} 3.35366573568e+14
+smartctl_device_capacity_blocks{device="nvme0"} 9.7677846e+07
+smartctl_device_capacity_bytes{device="nvme0"} 4.00088457216e+11
+smartctl_device_critical_warning{device="nvme0"} 0
+smartctl_device_media_errors{device="nvme0"} 0
+smartctl_device_num_err_log_entries{device="nvme0"} 0
+smartctl_device_percentage_used{device="nvme0"} 5
+smartctl_device_power_cycle_count{device="nvme0"} 55
+smartctl_device_power_on_seconds{device="nvme0"} 1.510236e+08
+smartctl_device_smart_status{device="nvme0"} 1
+smartctl_device_smartctl_exit_status{device="nvme0"} 0
+smartctl_device_temperature{device="nvme0",temperature_type="current"} 28
+smartctl_device{ata_additional_product_id="unknown",ata_version="",device="nvme0",firmware_version="REDACTED",form_factor="",interface="nvme",model_family="unknown",model_name="INTEL SSDPEDMD400G4",protocol="NVMe",sata_version="",scsi_product="",scsi_revision="",scsi_vendor="",scsi_version="",serial_number="REDACTED"} 1

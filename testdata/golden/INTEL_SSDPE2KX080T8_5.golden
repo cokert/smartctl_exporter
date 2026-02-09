@@ -1,0 +1,19 @@
+smartctl_device_available_spare_threshold{device="nvme1"} 10
+smartctl_device_available_spare{device="nvme1"} 99
+smartctl_device_block_size{blocks_type="logical",device="nvme1"} 0
+smartctl_device_block_size{blocks_type="physical",device="nvme1"} 0
+smartctl_device_bytes_read{device="nvme1"} 1.1645048832e+13
+smartctl_device_bytes_written{device="nvme1"} 8.0699417088e+13
+smartctl_device_capacity_blocks{device="nvme1"} 0
+smartctl_device_capacity_bytes{device="nvme1"} 0
+smartctl_device_critical_warning{device="nvme1"} 0
+smartctl_device_media_errors{device="nvme1"} 0
+smartctl_device_num_err_log_entries{device="nvme1"} 0
+smartctl_device_nvme_capacity_bytes{device="nvme1"} 8.001563222016e+12
+smartctl_device_percentage_used{device="nvme1"} 0
+smartctl_device_power_cycle_count{device="nvme1"} 39
+smartctl_device_power_on_seconds{device="nvme1"} 4.56156e+07
+smartctl_device_smart_status{device="nvme1"} 1
+smartctl_device_smartctl_exit_status{device="nvme1"} 0
+smartctl_device_temperature{device="nvme1",temperature_type="current"} 30
+smartctl_device{ata_additional_product_id="unknown",ata_version="",device="nvme1",firmware_version="REDACTED",form_factor="",interface="nvme",model_family="unknown",model_name="INTEL SSDPE2KX080T8",protocol="NVMe",sata_version="",scsi_product="",scsi_revision="",scsi_vendor="",scsi_version="",serial_number="REDACTED"} 1

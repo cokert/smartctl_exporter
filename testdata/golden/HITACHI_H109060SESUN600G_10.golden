@@ -1,0 +1,23 @@
+smartctl_device_block_size{blocks_type="logical",device="sdb"} 512
+smartctl_device_block_size{blocks_type="physical",device="sdb"} 0
+smartctl_device_bytes_read{device="sdb"} 1.62438759e+14
+smartctl_device_bytes_written{device="sdb"} 1.2755126e+14
+smartctl_device_capacity_blocks{device="sdb"} 1.172123568e+09
+smartctl_device_capacity_bytes{device="sdb"} 6.00127266816e+11
+smartctl_device_power_cycle_count{device="sdb"} 70
+smartctl_device_power_on_seconds{device="sdb"} 8.051352e+07
+smartctl_device_rotation_rate{device="sdb"} 10020
+smartctl_device_smart_status{device="sdb"} 1
+smartctl_device_smartctl_exit_status{device="sdb"} 0
+smartctl_device_temperature{device="sdb",temperature_type="current"} 26
+smartctl_device_temperature{device="sdb",temperature_type="drive_trip"} 85
+smartctl_device{ata_additional_product_id="unknown",ata_version="",device="sdb",firmware_version="",form_factor="2.5 inches",interface="scsi",model_family="unknown",model_name="HITACHI H109060SESUN600G",protocol="SCSI",sata_version="",scsi_product="H109060SESUN600G",scsi_revision="A31A",scsi_vendor="HITACHI",scsi_version="SPC-4",serial_number="REDACTED"} 1
+smartctl_read_errors_corrected_by_eccdelayed{device="sdb"} 40247
+smartctl_read_errors_corrected_by_eccfast{device="sdb"} 0
+smartctl_read_errors_corrected_by_rereads_rewrites{device="sdb"} 0
+smartctl_read_total_uncorrected_errors{device="sdb"} 0
+smartctl_scsi_grown_defect_list{device="sdb"} 0
+smartctl_write_errors_corrected_by_eccdelayed{device="sdb"} 2.6762907e+07
+smartctl_write_errors_corrected_by_eccfast{device="sdb"} 0
+smartctl_write_errors_corrected_by_rereads_rewrites{device="sdb"} 0
+smartctl_write_total_uncorrected_errors{device="sdb"} 0

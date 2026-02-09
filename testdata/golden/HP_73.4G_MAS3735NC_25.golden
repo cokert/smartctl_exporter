@@ -1,0 +1,22 @@
+smartctl_device_block_size{blocks_type="logical",device="sdc"} 512
+smartctl_device_block_size{blocks_type="physical",device="sdc"} 0
+smartctl_device_bytes_read{device="sdc"} 6.4396534e+13
+smartctl_device_bytes_written{device="sdc"} 2.8837334e+13
+smartctl_device_capacity_blocks{device="sdc"} 1.43374738e+08
+smartctl_device_capacity_bytes{device="sdc"} 7.3407865856e+10
+smartctl_device_power_cycle_count{device="sdc"} 184
+smartctl_device_rotation_rate{device="sdc"} 15000
+smartctl_device_smart_status{device="sdc"} 1
+smartctl_device_smartctl_exit_status{device="sdc"} 0
+smartctl_device_temperature{device="sdc",temperature_type="current"} 28
+smartctl_device_temperature{device="sdc",temperature_type="drive_trip"} 65
+smartctl_device{ata_additional_product_id="unknown",ata_version="",device="sdc",firmware_version="",form_factor="",interface="scsi",model_family="unknown",model_name="HP 73.4G MAS3735NC",protocol="SCSI",sata_version="",scsi_product="MAS3735NC",scsi_revision="HPC3",scsi_vendor="HP 73.4G",scsi_version="",serial_number="REDACTED"} 1
+smartctl_read_errors_corrected_by_eccdelayed{device="sdc"} 1020
+smartctl_read_errors_corrected_by_eccfast{device="sdc"} 0
+smartctl_read_errors_corrected_by_rereads_rewrites{device="sdc"} 0
+smartctl_read_total_uncorrected_errors{device="sdc"} 0
+smartctl_scsi_grown_defect_list{device="sdc"} 0
+smartctl_write_errors_corrected_by_eccdelayed{device="sdc"} 338
+smartctl_write_errors_corrected_by_eccfast{device="sdc"} 0
+smartctl_write_errors_corrected_by_rereads_rewrites{device="sdc"} 0
+smartctl_write_total_uncorrected_errors{device="sdc"} 0
