@@ -275,9 +275,11 @@ var (
 	)
 	metricDeviceSelfTestStatus = prometheus.NewDesc(
 		"smartctl_device_self_test_status",
-		"Device SMART self test execution status value from ata_smart_data",
+		// Reference: https://github.com/smartmontools/smartmontools/blob/master/smartmontools/ataprint.cpp
+		"Device SMART self test execution status byte value",
 		[]string{
 			"device",
+			"status",
 		},
 		nil,
 	)

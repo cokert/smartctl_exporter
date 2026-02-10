@@ -563,17 +563,45 @@ func (smart *SMARTctl) mineDeviceSelfTestLog() {
 	smart.mineDeviceSelfTestStatus()
 }
 
+// ataSmartSelfTestStatus maps the upper nibble of the ATA self-test execution
+// status byte to a short, stable Prometheus label value.
+// Reference: https://github.com/smartmontools/smartmontools/blob/master/smartmontools/ataprint.cpp
+// (search for "Self-test execution status")
+// Reference: ATA/ACS spec, "Self-test execution status byte"
+var ataSmartSelfTestStatus = map[int64]string{
+	0x0: "completed_no_error",
+	0x1: "aborted_by_host",
+	0x2: "interrupted_by_reset",
+	0x3: "fatal_or_unknown_error",
+	0x4: "completed_unknown_element_error",
+	0x5: "completed_electrical_error",
+	0x6: "completed_servo_error",
+	0x7: "completed_read_error",
+	0x8: "completed_handling_damage_error",
+	0xF: "in_progress",
+}
+
 func (smart *SMARTctl) mineDeviceSelfTestStatus() {
 	status := smart.json.Get("ata_smart_data.self_test.status")
 	if !status.Exists() {
 		return
 	}
+
+	value := status.Get("value").Int()
+	upperNibble := value >> 4
+	statusLabel, ok := ataSmartSelfTestStatus[upperNibble]
+	if !ok {
+		statusLabel = "unknown"
+	}
+
 	smart.ch <- prometheus.MustNewConstMetric(
 		metricDeviceSelfTestStatus,
 		prometheus.GaugeValue,
-		status.Get("value").Float(),
+		float64(value),
 		smart.device.device,
+		statusLabel,
 	)
+
 	remainingPercent := 0.0
 	if rp := status.Get("remaining_percent"); rp.Exists() {
 		remainingPercent = rp.Float()

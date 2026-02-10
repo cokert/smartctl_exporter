@@ -87,7 +87,7 @@ smartctl_device_rotation_rate{device="sdb"} 7200
 smartctl_device_self_test_log_count{device="sdb",self_test_log_type="standard"} 21
 smartctl_device_self_test_log_error_count{device="sdb",self_test_log_type="standard"} 0
 smartctl_device_self_test_remaining_percent{device="sdb"} 90
-smartctl_device_self_test_status{device="sdb"} 249
+smartctl_device_self_test_status{device="sdb",status="in_progress"} 249
 smartctl_device_smart_status{device="sdb"} 1
 smartctl_device_smartctl_exit_status{device="sdb"} 0
 smartctl_device_temperature{device="sdb",temperature_type="current"} 43
