@@ -561,6 +561,74 @@ func (smart *SMARTctl) mineDeviceSelfTestLog() {
 		)
 	}
 	smart.mineDeviceSelfTestStatus()
+	smart.mineDeviceSelfTestLastEntries()
+}
+
+func (smart *SMARTctl) mineDeviceSelfTestLastEntries() {
+	table := smart.json.Get("ata_smart_self_test_log.standard.table")
+	if !table.Exists() {
+		return
+	}
+	powerOnHours := smart.json.Get("power_on_time.hours")
+	localTime := smart.json.Get("local_time.time_t")
+	if !powerOnHours.Exists() || !localTime.Exists() {
+		return
+	}
+	currentPOH := powerOnHours.Int()
+	now := localTime.Int()
+
+	// Find the most recent completed entry per test type.
+	// The table is ordered most-recent first.
+	seen := map[string]bool{}
+	for _, entry := range table.Array() {
+		testType := strings.ToLower(strings.ReplaceAll(entry.Get("type.string").String(), " ", "_"))
+		if seen[testType] {
+			continue
+		}
+		status := entry.Get("status")
+		statusValue := status.Get("value").Int()
+		// Skip entries that are still in progress (upper nibble 0xF).
+		if statusValue>>4 == 0xF {
+			continue
+		}
+		seen[testType] = true
+
+		lifetimeHours := entry.Get("lifetime_hours").Int()
+		estimatedTimestamp := now - (currentPOH-lifetimeHours)*3600
+
+		smart.ch <- prometheus.MustNewConstMetric(
+			metricDeviceSelfTestLastTimestamp,
+			prometheus.GaugeValue,
+			float64(estimatedTimestamp),
+			smart.device.device,
+			testType,
+		)
+
+		statusLabel, ok := ataSmartSelfTestStatus[statusValue>>4]
+		if !ok {
+			statusLabel = "unknown"
+		}
+		smart.ch <- prometheus.MustNewConstMetric(
+			metricDeviceSelfTestLastStatus,
+			prometheus.GaugeValue,
+			float64(statusValue),
+			smart.device.device,
+			testType,
+			statusLabel,
+		)
+
+		passed := 0.0
+		if status.Get("passed").Bool() {
+			passed = 1.0
+		}
+		smart.ch <- prometheus.MustNewConstMetric(
+			metricDeviceSelfTestLastPassed,
+			prometheus.GaugeValue,
+			passed,
+			smart.device.device,
+			testType,
+		)
+	}
 }
 
 // ataSmartSelfTestStatus maps the upper nibble of the ATA self-test execution

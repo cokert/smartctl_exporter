@@ -84,6 +84,12 @@ smartctl_device_interface_speed{device="sdb",speed_type="max"} 6e+09
 smartctl_device_power_cycle_count{device="sdb"} 38
 smartctl_device_power_on_seconds{device="sdb"} 2.7072e+06
 smartctl_device_rotation_rate{device="sdb"} 7200
+smartctl_device_self_test_last_passed{device="sdb",test_type="extended_offline"} 0
+smartctl_device_self_test_last_passed{device="sdb",test_type="short_offline"} 1
+smartctl_device_self_test_last_status{device="sdb",status="aborted_by_host",test_type="extended_offline"} 25
+smartctl_device_self_test_last_status{device="sdb",status="completed_no_error",test_type="short_offline"} 0
+smartctl_device_self_test_last_timestamp{device="sdb",test_type="extended_offline"} 1.23397749e+09
+smartctl_device_self_test_last_timestamp{device="sdb",test_type="short_offline"} 1.23449589e+09
 smartctl_device_self_test_log_count{device="sdb",self_test_log_type="standard"} 21
 smartctl_device_self_test_log_error_count{device="sdb",self_test_log_type="standard"} 0
 smartctl_device_self_test_remaining_percent{device="sdb"} 90

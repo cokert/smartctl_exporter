@@ -283,6 +283,34 @@ var (
 		},
 		nil,
 	)
+	metricDeviceSelfTestLastTimestamp = prometheus.NewDesc(
+		"smartctl_device_self_test_last_timestamp",
+		"Estimated Unix timestamp of the last completed self test of each type, calculated from power-on hours. This estimate drifts backward if the machine or drive is powered off for extended periods, since power-on hours only count uptime.",
+		[]string{
+			"device",
+			"test_type",
+		},
+		nil,
+	)
+	metricDeviceSelfTestLastStatus = prometheus.NewDesc(
+		"smartctl_device_self_test_last_status",
+		"Status value of the last completed self test of each type",
+		[]string{
+			"device",
+			"test_type",
+			"status",
+		},
+		nil,
+	)
+	metricDeviceSelfTestLastPassed = prometheus.NewDesc(
+		"smartctl_device_self_test_last_passed",
+		"Whether the last completed self test of each type passed (1) or failed (0)",
+		[]string{
+			"device",
+			"test_type",
+		},
+		nil,
+	)
 	metricDeviceSelfTestRemainingPercent = prometheus.NewDesc(
 		"smartctl_device_self_test_remaining_percent",
 		"Device SMART self test remaining percent, 0 when no test is running",
