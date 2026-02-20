@@ -294,7 +294,7 @@ var (
 	)
 	metricDeviceSelfTestLastStatus = prometheus.NewDesc(
 		"smartctl_device_self_test_last_status",
-		"Status value of the last completed self test of each type",
+		"Status value of the last completed self test of each type. The metric value is the raw ATA status byte. Possible values for the 'status' label: completed_no_error, aborted_by_host, interrupted_by_reset, fatal_or_unknown_error, completed_unknown_element_error, completed_electrical_error, completed_servo_error, completed_read_error, completed_handling_damage_error, in_progress.",
 		[]string{
 			"device",
 			"test_type",
